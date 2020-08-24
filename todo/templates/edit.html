@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+
+	{% block content %}
+	
+	<form method="POST">
+		{% csrf_token %}
+		<div class="form-group">
+			<textarea class="form-control" id="text" name="text"></textarea>
+		</div>
+		<div class="form-group">
+			<button class="btn btn-danger w-40 my-3" id="cancelaEdicao" type="submit">Cancelar</button>
+			<button class="btn btn-primary w-40 my-3" type="submit">Confirmar alteração</button>
+		<div class="form-group">
+		{% bootstrap_messages %}
+	</form>
+	
+	<script src="{% static 'js/scripts-edit-view.js' %}"></script>
+	<script>
+		document.querySelector("#text").value ="{{ task.text }}";
+		
+		document.querySelector("#cancelaEdicao").onclick = function (e) {
+			e.preventDefault();
+			location.href = "/";
+		}
+		
+		
+		
+	</script>
+	{% endblock %}
+	 
