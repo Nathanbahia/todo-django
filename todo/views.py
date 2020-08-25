@@ -1,9 +1,11 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from .models import TaskModel
 from .forms import TaskModelForm
 
 
+@login_required
 def index(request):
     tasks = TaskModel.objects.filter(active=True)
     form = TaskModelForm(request.POST or None)
@@ -17,12 +19,15 @@ def index(request):
     return render(request, 'index.html', {'form': form, 'tasks': tasks})
 
 
+@login_required
 def remove(request, id):
     task = TaskModel.objects.get(pk=id)
     task.active = False
     task.save()
     return redirect(index)
 
+
+@login_required
 def edit(request, id):
     task = TaskModel.objects.get(pk=id)
     form = TaskModelForm(request.POST or None)

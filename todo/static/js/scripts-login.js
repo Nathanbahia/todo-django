@@ -1,6 +1,5 @@
 let theme = document.querySelector("#theme");
 let body = document.querySelector("body");
-let tbody = document.querySelector("table");
 let links = document.querySelectorAll("a");
 let button = document.querySelectorAll(".btn");
 let icons = document.querySelectorAll("i");
@@ -15,7 +14,6 @@ function altera_tema () {
 	if (color === "light") {
 		body.style.backgroundColor = "#484848";
 		body.style.color = "#cccccc";
-		tbody.style.color = "#cccccc";
 		for (let i = 0; i < links.length; i++) {
 			links[i].style.color = "#cccccc";
 		}
@@ -29,7 +27,6 @@ function altera_tema () {
 	} else {
 		body.style.backgroundColor = "#ffffff";
 		body.style.color = "#000000";
-		tbody.style.color = "#000000";
 		for (let i = 0; i < links.length; i++) {
 			links[i].style.color = "#000000";
 		}
